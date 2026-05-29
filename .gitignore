@@ -1,0 +1,91 @@
+# ============================
+# CONFIG  GITIGNORE (H4CKL0G)
+# ============================
+
+# Git Internals & CI/CD 
+.git/
+.git*
+.github/
+
+# Wrangler & Cloudflare
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+wrangler.jsonc
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# IDEs & Editores (VS Code, Vim, JetBrains)
+.vscode/
+.history/
+.idea/
+/.idea
+vim-tools_notiz.vim
+.vimspector.json
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Scripts de automatización locales
+push.sh
+
+# C, C++
+*.x
+*.d
+*.dSYM
+*.o
+*.out
+
+# Python
+*.pyc
+__pycache__/
+build/
+
+# JavaScript & Node.js
+node_modules/
+
+# Rust
+target/
+**/*.rs.bk
+
+# Java
+*.class
+
+# Logs & Cache
+*.log
+*.cache
+cache/
+
+# Test & Archivos Temporales
+test.*
+tmp.*
+temp.*
+
+# Tags (Navegación de código)
+TAGS
+!TAGS/
+tags
+tags-cn
+!tags/
+.tags
+.tags1
+tags.lock
+tags.temp
+gtags.files
+GTAGS
+GRTAGS
+GPATH
+cscope.files
+cscope.out
+cscope.in.out
+cscope.po.out
