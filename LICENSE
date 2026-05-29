@@ -1,0 +1,57 @@
+MIT License
+
+Copyright (c) 2026 ch4rum — H4ckL0g
+https://ch4rum.github.io/H4ckL0g/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+ADDITIONAL TERMS — ETHICAL USE
+
+This project is intended exclusively for educational purposes, authorized
+security research, and lawful penetration testing.
+
+By using, copying, modifying, or distributing this software, you agree that:
+
+  1. You will only use any technique, tool, or knowledge from this project
+     against systems and networks you own or have explicit written permission
+     to test.
+
+  2. You will not use this software to facilitate unauthorized access, data
+     theft, denial of service, or any other activity that violates applicable
+     local, national, or international law.
+
+  3. You understand that the author (ch4rum) assumes no responsibility for
+     misuse, damage, legal consequences, or any harm resulting from the
+     application of content or tools published in this repository.
+
+  4. Writeups published here cover only retired machines, past CTF challenges,
+     or publicly disclosed vulnerabilities, in compliance with platform rules
+     and responsible disclosure practices.
+
+If you cannot agree to all of the above, you are not authorized to use this
+software.
+
+-------------------------------------------------------------------------------
+
+For questions, contact via:
+  GitHub   → https://github.com/ch4rum
+  Discord  → https://discord.gg/Z4WwQJqjB
+  Instagram→ https://www.instagram.com/Ch4rum/
