@@ -1,4 +1,4 @@
-# TCP/IP and Network Protocols Explained
+![Tcp Ip](https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80)
 
 Understanding how data travels across the internet is non-negotiable for anyone working in offensive or defensive security. Without this foundation, network attacks appear as black magic. With it, every attack — ARP poisoning, DNS spoofing, SYN floods, man-in-the-middle — becomes a logical consequence of how the protocols were designed decades ago, often with trust rather than security as the primary concern.
 

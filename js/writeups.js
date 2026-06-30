@@ -5,11 +5,13 @@
     title:      "",
     category:   "",            // htb | tryhackme | ctf | vulnhub | pico
     platform:   "",
+    os:         "",            // Linux | Windows | "empty"
     difficulty: "",
     date:       "",
-    author:     "",            // or "" for local
+    author:     "",
     image:      "",
-    excerpt:    ""
+    locked:     false          // true = not open
+    excerpt:    "",
   },
 */
 
@@ -19,10 +21,38 @@ const WRITEUPS = [
     title:      "HackTheBox: TwoMillion",
     category:   "htb",
     platform:   "HackTheBox",
+    os:         "Linux",
     difficulty: "Easy",
     date:       "May 10, 2026",
     author:     "Ch4rum",
-    image:      "https://bhavik-kanejiya.github.io/images/HTB/TwoMillion/Pasted%20image%2020250118171354.png",
+    image:      "writeups/htb/src/twomillion/01_logo.png",
+    locked:     false,
     excerpt:    "TwoMillion is an Easy difficulty Linux box that was released to celebrate reaching 2 million users on HackTheBox. The box features an old version of the HackTheBox platform that includes the old hackable invite code. After hacking the invite code an account can be created on the platform. The account can be used to enumerate various API endpoints, one of which can be used to elevate the user to an Administrator. With administrative access the user can perform a command injection in the admin VPN generation endpoint thus gaining a system shell. An .env file is found to contain database credentials and owed to password re-use the attackers can login as user admin on the box. The system kernel is found to be outdated and CVE-2023-0386 can be used to gain a root shell."
+  },
+  {
+    id:         "cctv",
+    title:      "HackTheBox: CCTV",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Jun 28, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/cctv/01_logo.png",
+    locked:     true,
+    excerpt:    "CCTV is an Easy difficulty Linux machine running motionEye. Enumeration reveals an exposed admin panel with default credentials. The filename field in motionEye is vulnerable to OS command injection, allowing RCE and obtaining a reverse shell as a low-privilege user. Privilege escalation is achieved by exploiting a SUID binary or misconfigured sudo rule to gain root."
+  },
+  {
+    id:         "kobold",
+    title:      "HackTheBox: Kobold",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Jun 28, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/kobold/01_logo.png",
+    locked:     true,
+    excerpt:    "Kobold is an Easy difficulty Linux machine. Initial foothold involves enumerating exposed services and exploiting a web vulnerability. Lateral movement and privilege escalation are achieved through credential reuse and misconfigured system services."
   },
 ];

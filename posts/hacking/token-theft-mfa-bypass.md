@@ -1,4 +1,4 @@
-# Token Theft: How Infostealers Are Killing MFA in 2026
+![Token Theft](https://ismalicious.com/medias/blog/posts/session-token-theft-infostealers-bypass-mfa.png)
 
 Multi-Factor Authentication (MFA) was supposed to be the solution. "Even if they steal your password, they can't get past the second factor." That statement, once considered a security bedrock, has become dangerously outdated.
 

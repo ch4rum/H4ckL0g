@@ -1,4 +1,4 @@
-# OSINT: Open Source Intelligence Techniques
+![Osint Techniques](https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80)
 
 **OSINT** (Open Source Intelligence) is the practice of collecting, correlating, and analyzing information from publicly available sources to build actionable intelligence about a target. No exploits, no unauthorized access — the data is already out there, indexed and accessible to anyone who knows the right queries, tools, and methodology.
 

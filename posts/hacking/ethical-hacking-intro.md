@@ -1,4 +1,4 @@
-# Ethical Hacking: What It Is and How to Start
+![Ethical Hacking](https://blog.computerservicenow.com/wp-content/uploads/2020/04/adobe-csn-hacking.jpg)
 
 **Ethical hacking** — also known as penetration testing or offensive security — involves attacking systems with explicit written authorization in order to discover vulnerabilities before malicious actors do. It is a legitimate, highly regulated, and in-demand profession that sits at the intersection of deep technical knowledge and legal responsibility.
 

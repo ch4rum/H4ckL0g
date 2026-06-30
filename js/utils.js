@@ -76,9 +76,6 @@ function renderMarkdown(md, imgClass) {
     return t;
   });
 
-  // Your original chain — two fixes only:
-  //   1. imgClass variable instead of hardcoded 'writeup-img'
-  //   2. Removed the broken .replace(/^(?!<[hpbucali])/gm, '') that was deleting lines
   html = html
     .replace(/^# (.+)$/gm,    '<h1>$1</h1>')
     .replace(/^## (.+)$/gm,   '<h2>$1</h2>')

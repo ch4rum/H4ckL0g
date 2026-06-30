@@ -1,4 +1,4 @@
-# OSINT in the Age of Deepfakes: Detecting Synthetic Identities
+![Osint](https://static.scientificamerican.com/dam/m/c8cf593f7aa3ffb9/original/GettyImages-2200516160.jpg?m=1769195254.56&w=900)
 
 The year is 2026. You are investigating a threat actor. You find a LinkedIn profile — perfect work history, professional headshot, mutual connections with people you recognize, three published papers on arXiv, even a recorded conference talk. Everything checks out.
 

@@ -24,6 +24,16 @@ const POSTS = [
     excerpt:  "A LinkedIn profile with perfect work history, mutual connections, and published papers. The person doesn't exist. How to detect synthetic AI-generated identities in 2026."
   },
   {
+    id:       "dns-tunneling-exfiltration",
+    title:    "DNS Tunneling: Data Exfiltration Through the Protocol Nobody Blocks",
+    category: "networks",
+    date:     "May 20, 2026",
+    author:   "Ch4rum",
+    reading:  "16 min",
+    image:    "https://www.reversinglabs.com/api/media/file/data-exfiltrator-blog-1400x711.webp",
+    excerpt:  "Every firewall blocks HTTP. Everyone inspects HTTPS. But DNS? DNS stays open forever. Here's how attackers tunnel entire C2 channels through port 53 — and how to catch them."
+  },
+  {
     id:        "win-shellcoding",
     title:     "Windows Shellcoding (In-Depth)",
     category:  "malware",

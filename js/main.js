@@ -2,35 +2,37 @@
 // Depends on: utils.js · posts.js · writeups.js · githubs.js · github.js
 
 // ── ROTATING PROMPT ──────────────────────────────────────────
-const PROMPTS = [
-  '$ ls -la /posts/',
-  '$ nmap -sV -p 1-1024 target',
-  '$ cat /etc/shadow',
-  '$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f exe -o ch4rum.exe',
-  '$ python3 exploit.py --target 192.168.1.1',
-  '$ grep -r "password" /var/www/',
-  '$ msfconsole -q',
-  '$ xxd -l 64 malware.exe',
-  '$ hashcat -m 0 hash.txt rockyou.txt',
-  '$ wireshark -i eth0',
-  '$ whoami && id',
-  '$ git clone https://github.com/ch4rum/tools',
-  '$ cat writeup.md',
-  '$ grep flag.txt',
-  '$ ./exploit.py',
-  '$ cat solution.md',
-  '$ cat post.md',
-  '$ ls -la github/',
-  '$ git log --oneline',
-  '$ git status',
-  '$ less article.txt',
-  '$ grep -i "exploit" notes.md',
-  '$ man hacking',
-  '$ python -c "print(hex(0x133d - 0x12a7))"'
-];
-let promptIdx = 0;
 const promptEl = document.getElementById('prompt-text');
-if (promptEl) {
+if (promptEl && promptEl.textContent.trim() === '') {
+  const PROMPTS = [
+    '$ ls -la posts/',
+    '$ nmap -sV -p 1-1024 target',
+    '$ cat /etc/shadow',
+    '$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f exe -o ch4rum.exe',
+    '$ python3 exploit.py --target 192.168.1.1',
+    '$ grep -r "password" /var/www/',
+    '$ msfconsole -q',
+    '$ xxd -l 64 malware.exe',
+    '$ hashcat -m 0 hash.txt rockyou.txt',
+    '$ wireshark -i eth0',
+    '$ whoami && id',
+    '$ git clone https://github.com/ch4rum/tools',
+    '$ cat writeup.md',
+    '$ grep flag.txt',
+    '$ nxc smb 10.129.30.33 -u "NULL" -p "iXzvcib3SrpZ" --shares',
+    '$ ./exploit.py',
+    '$ cat solution.md',
+    '$ cat post.md',
+    '$ ls -la github/',
+    '$ git log --oneline',
+    '$ git status',
+    '$ less article.txt',
+    '$ nc -lvnp 4444',
+    '$ grep -i "exploit" notes.md',
+    '$ man hacking',
+    '$ python -c "print(hex(0x133d - 0x12a7))"'
+  ];
+  let promptIdx = 0;
   promptEl.textContent = PROMPTS[0];
   promptEl.style.transition = 'opacity .3s';
   setInterval(() => {
@@ -135,9 +137,9 @@ if (typeof POSTS !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// WRITEUPS
+// WRITEUPS - SOLO PARA index.html (NO para writeup.html)
 // ═══════════════════════════════════════════════════════════════
-if (typeof WRITEUPS !== 'undefined') {
+if (typeof WRITEUPS !== 'undefined' && !document.querySelector('.wu-orbit-wrap')) {
   const writeupFilterBar = document.getElementById('writeup-filter-bar');
   const writeupsList     = document.getElementById('writeups-list');
   const writeupCount     = document.getElementById('writeup-count');
@@ -311,7 +313,6 @@ function initRandomHeroImage() {
         heroImageDiv.dataset.postId = post.id;
       }
       
-      // Change image 10 seg
       setInterval(updateRandomImage, 10000);
       updateRandomImage();
       heroImageDiv.addEventListener('click', function() {
@@ -331,4 +332,97 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initRandomHeroImage);
 } else {
   initRandomHeroImage();
+}
+
+// ── CONTEXT-AWARE SEARCH ──
+function initSearch() {
+  const headerInner = document.querySelector('.header-inner');
+  if (!headerInner) return;
+
+  let searchData = [];
+  const isWriteupsPage = !!document.querySelector('.wu-orbit-wrap') || !!document.getElementById('section-writeups');
+  const isGithubPage   = !!document.getElementById('repo-filter-bar') && !!document.querySelector('.repo-list');
+  const isHomePage     = !!document.getElementById('post-filter-bar') && !isWriteupsPage;
+
+  if (isWriteupsPage && typeof WRITEUPS !== 'undefined') {
+    searchData = WRITEUPS.map(w => ({
+      title: w.title, img: w.image, meta: w.platform || w.category,
+      href: w.locked ? null : `writeup.html?id=${w.id}`
+    }));
+  } else if (isGithubPage && typeof REPOS !== 'undefined') {
+    searchData = REPOS.map(r => ({
+      title: r.name, img: null, meta: r.category + ' · ' + (r.lang||''),
+      href: null,
+      repo: r
+    }));
+  } else if (isHomePage && typeof POSTS !== 'undefined') {
+    searchData = POSTS.map(p => ({
+      title: p.title, img: p.image, meta: p.category + ' · ' + p.date,
+      href: `post.html?id=${p.id}`
+    }));
+  }
+
+  const nav = headerInner.querySelector('nav');
+  const right = document.createElement('div');
+  right.className = 'header-right';
+
+  right.innerHTML = `
+    <div class="site-search-wrap">
+      <span class="site-search-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      <input type="text" class="site-search-input" placeholder="Search..." autocomplete="off" spellcheck="false"/>
+    </div>
+    <div class="site-search-results" id="site-search-results"></div>`;
+
+  headerInner.removeChild(nav);
+  right.prepend(nav);
+  headerInner.appendChild(right);
+
+  const input   = right.querySelector('.site-search-input');
+  const results = right.querySelector('#site-search-results');
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { results.classList.remove('open'); return; }
+    const matched = searchData.filter(d => d.title.toLowerCase().includes(q)).slice(0, 7);
+    if (matched.length === 0) {
+      results.innerHTML = `<div class="search-no-results">No results for "${q}"</div>`;
+    } else {
+      results.innerHTML = matched.map(d => `
+        <div class="search-result-item" data-href="${d.href || ''}" data-repo="${d.repo ? JSON.stringify(d.repo).replace(/"/g, '&quot;') : ''}">
+          ${d.img ? `<img class="search-result-thumb" src="${d.img}" alt="" loading="lazy"/>` : `<div class="search-result-thumb" style="background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1rem">📁</div>`}
+          <div class="search-result-info">
+            <div class="search-result-title">${d.title}</div>
+            <div class="search-result-meta">${d.meta}</div>
+          </div>
+        </div>`).join('');
+    }
+    results.classList.add('open');
+    
+    results.querySelectorAll('.search-result-item').forEach(el => {
+      el.addEventListener('click', async () => {
+        const href = el.dataset.href;
+        if (href) {
+          window.location.href = href;
+        } else if (el.dataset.repo) {
+          const repo = JSON.parse(el.dataset.repo);
+          const repoData = await window.loadRepoFromMarkdown(repo);
+          if (typeof window.openModal === 'function') {
+            window.openModal(repo, repoData);
+          }
+        }
+        results.classList.remove('open');
+        input.value = '';
+      });
+    });
+  }
+
+  input.addEventListener('input', e => doSearch(e.target.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Escape') { results.classList.remove('open'); input.blur(); }});
+  document.addEventListener('click', e => { if (!right.contains(e.target)) results.classList.remove('open'); });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSearch);
+} else {
+  initSearch();
 }
