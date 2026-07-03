@@ -1032,7 +1032,7 @@ nav a:hover,nav a.active{
 .post-header{
   max-width:800px;
   margin:0 auto;
-  padding:3.5rem 2rem 2rem;
+  padding:3.5rem 2rem 0rem;
   animation:fadeUp .5s ease both
 }
 .post-tag{
