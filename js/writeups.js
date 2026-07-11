@@ -30,6 +30,32 @@ const WRITEUPS = [
     excerpt:    "TwoMillion is an Easy difficulty Linux box that was released to celebrate reaching 2 million users on HackTheBox. The box features an old version of the HackTheBox platform that includes the old hackable invite code. After hacking the invite code an account can be created on the platform. The account can be used to enumerate various API endpoints, one of which can be used to elevate the user to an Administrator. With administrative access the user can perform a command injection in the admin VPN generation endpoint thus gaining a system shell. An .env file is found to contain database credentials and owed to password re-use the attackers can login as user admin on the box. The system kernel is found to be outdated and CVE-2023-0386 can be used to gain a root shell."
   },
   {
+    id:         "makesense",
+    title:      "HackTheBox: MakeSense",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Medium",
+    date:       "Jul 11, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/makesense/01_logo.png",
+    locked:     true,
+    excerpt:    "MakeSense is a Medium difficulty Linux machine chaining a hardcoded AES-GCM key in client-side JavaScript, stored XSS in WordPress post metadata, and CSRF to escalate to admin. RCE is achieved via malicious plugin upload, and root is gained by exploiting insecure Tesseract OCR processing with a heredoc injection for arbitrary file write."
+  },
+  {
+    id:         "paperwork",
+    title:      "HackTheBox: Paperwork",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Jul 11, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/paperwork/01_logo.png",
+    locked:     true,
+    excerpt:    "Paperwork is an Easy difficulty Linux machine themed around network printing and document archiving. A static web portal exposes an onboarding document with plaintext root credentials, granting direct SSH access as root. A custom LPD service with a downloadable processor binary serves as a deliberate decoy to distract from the straightforward credential reuse path."
+  },
+  {
     id:         "reactor",
     title:      "HackTheBox: Reactor",
     category:   "htb",
@@ -52,7 +78,7 @@ const WRITEUPS = [
     date:       "Jul 02, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/enigma/01_logo.png",
-    locked:     true,
+    locked:     flase,
     excerpt:    "Enigma is an Easy difficulty Linux machine simulating a corporate environment. An exposed NFS share leaks onboarding credentials, which chain through Roundcube webmail and OpenSTAManager (CVE-2026-38751) to achieve remote code execution. Privilege escalation abuses OliveTin via command injection through its gRPC-Web API."
   },
   {
