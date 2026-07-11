@@ -78,7 +78,7 @@ const WRITEUPS = [
     date:       "Jul 02, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/enigma/01_logo.png",
-    locked:     flase,
+    locked:     true,
     excerpt:    "Enigma is an Easy difficulty Linux machine simulating a corporate environment. An exposed NFS share leaks onboarding credentials, which chain through Roundcube webmail and OpenSTAManager (CVE-2026-38751) to achieve remote code execution. Privilege escalation abuses OliveTin via command injection through its gRPC-Web API."
   },
   {
