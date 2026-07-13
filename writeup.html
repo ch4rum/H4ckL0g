@@ -71,8 +71,20 @@
   </div>
 
   <!-- ── FILTERS ── -->
-  <div class="filter-bar" id="writeup-filter-bar">
-    <span class="filter-label">Platform:</span>
+  <div class="wu-filters-wrap" id="wu-filters-wrap">
+    <div class="wu-filter-row">
+      <select class="wu-select" id="wu-platform-select"></select>
+      <select class="wu-select" id="wu-status-select"></select>
+      <select class="wu-select" id="wu-os-select"></select>
+      <select class="wu-select" id="wu-diff-select"></select>
+      <div class="wu-tags-dropdown" id="wu-tags-dropdown">
+        <button type="button" class="wu-select wu-tags-toggle" id="wu-tags-toggle">
+          <span id="wu-tags-toggle-label">Tags</span>
+          <span class="wu-tags-caret">▾</span>
+        </button>
+        <div class="wu-tags-panel" id="wu-tags-panel"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ── DIVIDER ── -->

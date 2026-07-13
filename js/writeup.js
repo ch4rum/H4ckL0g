@@ -75,6 +75,7 @@ function initOrbit() {
     const easy   = WRITEUPS.filter(w => (w.difficulty||'').toLowerCase() === 'easy').length;
     const medium = WRITEUPS.filter(w => (w.difficulty||'').toLowerCase() === 'medium').length;
     const hard   = WRITEUPS.filter(w => (w.difficulty||'').toLowerCase() === 'hard').length;
+    const insane = WRITEUPS.filter(w => (w.difficulty||'').toLowerCase() === 'insane').length;
 
     stats.innerHTML = [
       { label:'TOTAL',  val: total,  color:'var(--neon-cyan)'   },
@@ -83,6 +84,7 @@ function initOrbit() {
       { label:'EASY',   val: easy,   color:'var(--neon-green)'  },
       { label:'MEDIUM', val: medium, color:'#ffa500'             },
       { label:'HARD',   val: hard,   color:'var(--neon-pink)'   },
+      { label:'INSANE', val: insane, color:'var(--neon-purple)' },
     ].map(s => `
       <div class="wu-orbit-stat">
         <span class="wu-orbit-stat-val" style="color:${s.color}">${s.val}</span>
@@ -216,26 +218,67 @@ if (id) {
     initOrbit();
   }
 
-  const writeupFilterBar = document.getElementById('writeup-filter-bar');
+  const platformSelect   = document.getElementById('wu-platform-select');
+  const statusSelect     = document.getElementById('wu-status-select');
   const writeupsList     = document.getElementById('writeups-list');
   const writeupCount     = document.getElementById('writeup-count');
+  const osSelect         = document.getElementById('wu-os-select');
+  const diffSelect       = document.getElementById('wu-diff-select');
+  const tagsDropdown     = document.getElementById('wu-tags-dropdown');
+  const tagsToggle       = document.getElementById('wu-tags-toggle');
+  const tagsToggleLabel  = document.getElementById('wu-tags-toggle-label');
+  const tagsPanel        = document.getElementById('wu-tags-panel');
 
-  if (writeupFilterBar && WRITEUPS) {
-    // CLEAR existing buttons to prevent duplicates
-    writeupFilterBar.innerHTML = '<span class="filter-label">Platform:</span>';
-    
+  const currentFilters = { platform: 'all', status: 'all', os: 'all', difficulty: 'all', tags: new Set() };
+
+  // Platform dropdown
+  if (platformSelect && WRITEUPS) {
     const categories = ['all', ...new Set(WRITEUPS.map(w => w.category))];
-    categories.forEach(cat => {
-      const btn = document.createElement('button');
-      btn.className      = 'filter-btn wu-filter-btn' + (cat === 'all' ? ' active' : '');
-      btn.dataset.filter = cat;
-      btn.dataset.cat    = cat;
-      btn.textContent    = cat === 'all' ? 'All' : cat.toUpperCase();
-      writeupFilterBar.appendChild(btn);
-    });
+    platformSelect.innerHTML = categories.map(cat =>
+      `<option value="${cat}">${cat === 'all' ? 'All Platforms' : cat.toUpperCase()}</option>`).join('');
   }
 
-  let currentFilter = 'all';
+  // Status dropdown (locked = active HTB, unpublished / no locked = pwned, now published)
+  if (statusSelect) {
+    statusSelect.innerHTML = `
+      <option value="all">All Status</option>
+      <option value="pwned">Pwned</option>
+      <option value="active">Active</option>`;
+  }
+
+  // OS dropdown
+  if (osSelect && WRITEUPS) {
+    const osList = ['all', ...new Set(WRITEUPS.map(w => (w.os || '').trim()).filter(Boolean))];
+    osSelect.innerHTML = osList.map(o =>
+      `<option value="${o}">${o === 'all' ? 'All OS' : o}</option>`).join('');
+  }
+
+  // Difficulty dropdown
+  if (diffSelect && WRITEUPS) {
+    const diffList = ['all', ...new Set(WRITEUPS.map(w => (w.difficulty || '').trim()).filter(Boolean))];
+    diffSelect.innerHTML = diffList.map(d =>
+      `<option value="${d}">${d === 'all' ? 'All Difficulty' : d}</option>`).join('');
+  }
+
+  // Tags dropdown (multi-select)
+  if (tagsPanel && WRITEUPS) {
+    const allTags = [...new Set(WRITEUPS.flatMap(w => w.tags || []))].sort();
+    if (allTags.length === 0) {
+      if (tagsDropdown) tagsDropdown.style.display = 'none';
+    } else {
+      tagsPanel.innerHTML = allTags.map(tag => `
+        <label class="wu-tag-option">
+          <input type="checkbox" value="${tag}">
+          <span>${tag}</span>
+        </label>`).join('');
+    }
+  }
+
+  function updateTagsLabel() {
+    if (!tagsToggleLabel) return;
+    const n = currentFilters.tags.size;
+    tagsToggleLabel.textContent = n === 0 ? 'Tags' : `Tags (${n})`;
+  }
 
   function buildCard(writeup) {
     const card = document.createElement('div');
@@ -273,26 +316,81 @@ if (id) {
     return card;
   }
 
+  function passesFilters(w) {
+    if (currentFilters.platform   !== 'all' && w.category !== currentFilters.platform)   return false;
+    if (currentFilters.status !== 'all') {
+      const isLocked = !!w.locked;
+      if (currentFilters.status === 'active' && !isLocked) return false;
+      if (currentFilters.status === 'pwned'  &&  isLocked) return false;
+    }
+    if (currentFilters.os         !== 'all' && (w.os || '') !== currentFilters.os)       return false;
+    if (currentFilters.difficulty !== 'all' && (w.difficulty || '') !== currentFilters.difficulty) return false;
+    if (currentFilters.tags.size > 0) {
+      const wTags  = w.tags || [];
+      const hasAny = [...currentFilters.tags].some(t => wTags.includes(t));
+      if (!hasAny) return false;
+    }
+    return true;
+  }
+
   function renderWriteupsList() {
-    const filtered = currentFilter === 'all'
-      ? WRITEUPS : WRITEUPS.filter(w => w.category === currentFilter);
+    const filtered = WRITEUPS.filter(passesFilters);
     if (writeupCount) writeupCount.textContent = `(${filtered.length})`;
     if (writeupsList) writeupsList.innerHTML = '';
     filtered.forEach(w => writeupsList && writeupsList.appendChild(buildCard(w)));
   }
 
-  if (writeupFilterBar) {
-    writeupFilterBar.addEventListener('click', e => {
-      const btn = e.target.closest('.wu-filter-btn');
-      if (!btn) return;
-      writeupFilterBar.querySelectorAll('.wu-filter-btn').forEach(b => {
-        b.classList.remove('active');
-      });
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
+  if (platformSelect) {
+    platformSelect.addEventListener('change', () => {
+      currentFilters.platform = platformSelect.value;
       renderWriteupsList();
     });
   }
+
+  if (statusSelect) {
+    statusSelect.addEventListener('change', () => {
+      currentFilters.status = statusSelect.value;
+      renderWriteupsList();
+    });
+  }
+  
+  if (osSelect) {
+    osSelect.addEventListener('change', () => {
+      currentFilters.os = osSelect.value;
+      renderWriteupsList();
+    });
+  }
+
+  if (diffSelect) {
+    diffSelect.addEventListener('change', () => {
+      currentFilters.difficulty = diffSelect.value;
+      renderWriteupsList();
+    });
+  }
+
+  if (tagsPanel) {
+    tagsPanel.addEventListener('change', e => {
+      const cb = e.target.closest('input[type="checkbox"]');
+      if (!cb) return;
+      if (cb.checked) currentFilters.tags.add(cb.value);
+      else currentFilters.tags.delete(cb.value);
+      updateTagsLabel();
+      renderWriteupsList();
+    });
+  }
+
+  if (tagsToggle) {
+    tagsToggle.addEventListener('click', e => {
+      e.stopPropagation();
+      tagsDropdown.classList.toggle('open');
+    });
+  }
+
+  document.addEventListener('click', e => {
+    if (tagsDropdown && !tagsDropdown.contains(e.target)) {
+      tagsDropdown.classList.remove('open');
+    }
+  });
 
   renderWriteupsList();
 }
