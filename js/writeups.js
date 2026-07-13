@@ -91,7 +91,7 @@ const WRITEUPS = [
     date:       "Jun 28, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/cctv/01_logo.png",
-    locked:     true,
+    locked:     false,
     excerpt:    "CCTV is an Easy difficulty Linux machine running motionEye. Enumeration reveals an exposed admin panel with default credentials. The filename field in motionEye is vulnerable to OS command injection, allowing RCE and obtaining a reverse shell as a low-privilege user. Privilege escalation is achieved by exploiting a SUID binary or misconfigured sudo rule to gain root."
   },
   {
