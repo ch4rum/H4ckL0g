@@ -28,8 +28,36 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/twomillion/01_logo.png",
     locked:     false,
-    excerpt:    "TwoMillion is an Easy difficulty Linux box that was released to celebrate reaching 2 million users on HackTheBox. The box features an old version of the HackTheBox platform that includes the old hackable invite code. After hacking the invite code an account can be created on the platform. The account can be used to enumerate various API endpoints, one of which can be used to elevate the user to an Administrator. With administrative access the user can perform a command injection in the admin VPN generation endpoint thus gaining a system shell. An .env file is found to contain database credentials and owed to password re-use the attackers can login as user admin on the box. The system kernel is found to be outdated and CVE-2023-0386 can be used to gain a root shell.",
-    tags:       ["api", "idor", "command-injection", "kernel-exploit", "cve-2023-0386"]
+    excerpt:    "TwoMillion is an Easy difficulty Linux box released to celebrate 2 million HackTheBox users. It features the old HTB platform with a hackable invite code, API role escalation via IDOR, command injection in the admin VPN endpoint, plaintext credentials in a .env file, and privilege escalation via CVE-2023-0386 (OverlayFS kernel exploit).",
+    tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
+  },
+  {
+    id:         "orion",
+    title:      "HackTheBox: Orion",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Jul 16, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/orion/01_logo.png",
+    locked:     false,
+    excerpt:    "Orion is an Easy difficulty Linux machine hosting a CraftCMS 5.6.16 instance vulnerable to unauthenticated PHP deserialization (CVE-2025-32432), achieving RCE. Credentials extracted from config files expose database hashes, and privilege escalation abuses an authentication bypass in GNU inetutils telnetd 2.7 (CVE-2026-24061) via USER environment variable manipulation.",
+    tags:       ["craftcms", "deserialization", "php", "rce", "mysql", "telnetd", "auth-bypass", "port-forwarding", "cve"]
+  },
+  {
+    id:         "bedside",
+    title:      "HackTheBox: Bedside",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Medium",
+    date:       "Jun 15, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/bedside/01_logo.png",
+    locked:     true,
+    excerpt:    "Bedside is a Medium difficulty Linux machine built around a medical research PDF processing pipeline. Initial access abuses pdfminer.six insecure pickle deserialization (CVE-2025-64512) via a crafted PDF upload. Lateral movement exploits a path traversal in esm.sh (CVE-2025-59341) to steal an SSH private key. Root is achieved by planting a malicious PyTorch checkpoint that executes arbitrary code via torch.load() under a sudo rule.",
+    tags:       ["vhost-fuzzing", "pdfminer", "pickle", "deserialization", "rce", "lfi", "path-traversal", "ssh", "pytorch", "torch-load", "sudo", "nosuid", "cve"]
   },
   {
     id:         "makesense",
@@ -43,7 +71,7 @@ const WRITEUPS = [
     image:      "writeups/htb/src/makesense/01_logo.png",
     locked:     true,
     excerpt:    "MakeSense is a Medium difficulty Linux machine chaining a hardcoded AES-GCM key in client-side JavaScript, stored XSS in WordPress post metadata, and CSRF to escalate to admin. RCE is achieved via malicious plugin upload, and root is gained by exploiting insecure Tesseract OCR processing with a heredoc injection for arbitrary file write.",
-    tags:       ["aes-gcm", "xss", "wordpress", "csrf", "file-upload", "ocr", "tesseract"]
+    tags:       ["wordpress", "aes-gcm", "javascript", "stored-xss", "csrf", "rce", "plugin-upload", "ocr", "tesseract", "file-write", "privesc"]
   },
   {
     id:         "paperwork",
@@ -56,8 +84,8 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/paperwork/01_logo.png",
     locked:     true,
-    excerpt:    "Paperwork is an Easy difficulty Linux machine themed around network printing and document archiving. A static web portal exposes an onboarding document with plaintext root credentials, granting direct SSH access as root. A custom LPD service with a downloadable processor binary serves as a deliberate decoy to distract from the straightforward credential reuse path.",
-    tags:       ["credential-reuse", "ssh", "lpd", "printing"]
+    excerpt:    "Paperwork is an Easy difficulty Linux machine themed around network printing and document archiving. A static web portal exposes an onboarding document with plaintext root credentials, granting direct SSH access as root. A custom LPD service with a downloadable processor binary serves as a deliberate decoy.",
+    tags:       ["lpd", "enumeration", "plaintext-credentials", "credential-reuse", "ssh", "osint", "rabbit-hole"]
   },
   {
     id:         "reactor",
@@ -70,8 +98,8 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/reactor/01_logo.png",
     locked:     true,
-    excerpt:    "Reactor is an Easy difficulty Linux machine hosting a Next.js web application vulnerable to an unauthenticated RCE via React Server Components (CVE-2025-55182). Credentials extracted from a SQLite database lead to SSH access, and privilege escalation abuses a Node.js V8 Inspector process running as root via SSH port forwarding.",
-    tags:       ["nextjs", "react-server-components", "cve-2025-55182", "sqlite", "nodejs", "v8-inspector"]
+    excerpt:    "Reactor is an Easy difficulty Linux machine hosting a Next.js 15.0.3 application vulnerable to unauthenticated RCE via React Server Components (CVE-2025-55182). Credentials extracted from a SQLite database lead to SSH access, and privilege escalation abuses a Node.js V8 Inspector process running as root via SSH port forwarding.",
+    tags:       ["nextjs", "rce", "react-server-components", "sqlite", "ssh", "port-forwarding", "nodejs", "v8-inspector", "cve"]
   },
   {
     id:         "enigma",
@@ -84,8 +112,8 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/enigma/01_logo.png",
     locked:     true,
-    excerpt:    "Enigma is an Easy difficulty Linux machine simulating a corporate environment. An exposed NFS share leaks onboarding credentials, which chain through Roundcube webmail and OpenSTAManager (CVE-2026-38751) to achieve remote code execution. Privilege escalation abuses OliveTin via command injection through its gRPC-Web API.",
-    tags:       ["nfs", "roundcube", "opensta-manager", "cve-2026-38751", "olivetin", "grpc", "command-injection"]
+    excerpt:    "Enigma is an Easy difficulty Linux machine simulating a corporate environment. An exposed NFS share leaks onboarding credentials, which chain through Roundcube webmail and OpenSTAManager (CVE-2026-38751) to achieve RCE. Privilege escalation abuses OliveTin via command injection through its gRPC-Web API.",
+    tags:       ["nfs", "credential-reuse", "roundcube", "openstamanager", "file-upload", "rce", "bcrypt", "grpc", "olivetin", "command-injection", "cve"]
   },
   {
     id:         "cctv",
@@ -98,8 +126,8 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/cctv/01_logo.png",
     locked:     false,
-    excerpt:    "CCTV is an Easy difficulty Linux machine running motionEye. Enumeration reveals an exposed admin panel with default credentials. The filename field in motionEye is vulnerable to OS command injection, allowing RCE and obtaining a reverse shell as a low-privilege user. Privilege escalation is achieved by exploiting a SUID binary or misconfigured sudo rule to gain root.",
-    tags:       ["motioneye", "default-credentials", "command-injection", "suid", "sudo"]
+    excerpt:    "CCTV is an Easy difficulty Linux machine hosting a ZoneMinder instance vulnerable to blind SQL injection (CVE-2024-51482). Credentials extracted from the database lead to RCE via command injection in a misconfigured motionEye service running as root.",
+    tags:       ["sqli", "blind-sqli", "zoneminder", "motioneye", "command-injection", "rce", "cve"]
   },
   {
     id:         "kobold",
@@ -112,7 +140,7 @@ const WRITEUPS = [
     author:     "Ch4rum",
     image:      "writeups/htb/src/kobold/01_logo.png",
     locked:     true,
-    excerpt:    "Kobold is an Easy difficulty Linux machine. Initial foothold involves enumerating exposed services and exploiting a web vulnerability. Lateral movement and privilege escalation are achieved through credential reuse and misconfigured system services.",
-    tags:       ["web", "credential-reuse"]
+    excerpt:    "Kobold is an Easy difficulty Linux machine built around AI tooling infrastructure. Initial foothold exploits an unauthenticated RCE in MCPJam Inspector via a crafted MCP server payload (CVE-2026-23744). Privilege escalation abuses Docker group membership to mount the host filesystem and read the root flag.",
+    tags:       ["vhost-fuzzing", "mcp", "command-injection", "rce", "docker", "docker-escape", "cve"]
   },
 ];

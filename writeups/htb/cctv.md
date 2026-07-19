@@ -1,4 +1,4 @@
-## Synopsis
+# Synopsis
 
 **CCTV** is an easy-difficulty Linux machine on HackTheBox built around a real-world CCTV management stack. The machine hosts a **ZoneMinder** instance on port 80 and an internally exposed **motionEye** service on localhost. The attack path chains two CVEs: a blind SQL injection vulnerability [CVE-2024–51482](https://github.com/BridgerAlderson/CVE-2024-51482), in ZoneMinder to extract database credentials, followed by a command injection in a misconfigured motionEye instance running as root, resulting in full system compromise.
 
@@ -15,7 +15,7 @@
 - Command injection exploitation in motionEye
 - Privilege escalation via misconfigured service running as root
 
-### Enumeration
+## Enumeration
 
 Starting enumeration with `nmap`.
 
@@ -80,7 +80,7 @@ mark:opensesame
 admin:admin
 ```
 
-### Foothold
+## Foothold
 
 After completing the enumeration phase and recovering a valid password, the next step was to attempt access to the system via `SSH`. To do this, I tested the obtained credentials against the different users identified during enumeration, until finding a valid combination that allowed access to the server.
 
