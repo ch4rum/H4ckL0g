@@ -52,7 +52,7 @@ const WRITEUPS = [
     platform:   "HackTheBox",
     os:         "Linux",
     difficulty: "Medium",
-    date:       "Jun 15, 2026",
+    date:       "Jul 19, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/bedside/01_logo.png",
     locked:     true,
