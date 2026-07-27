@@ -32,6 +32,48 @@ const WRITEUPS = [
     tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
   },
   {
+    id:         "darkzeroreturns",
+    title:      "HackTheBox: DarkZeroReturns",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Windows",
+    difficulty: "Hard",
+    date:       "Jul 26, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/darkzeroreturns/01_logo.png",
+    locked:     true,
+    excerpt:    "DarkZeroReturns is a Hard difficulty machine combining Linux/Gitea with a dual-forest Active Directory environment. The chain spans Handlebars SSTI for RCE, bcrypt credential cracking, a Gitea Actions notifier bug (CVE-2026-22555) for CI/CD abuse as svc-runner, CREATE_CHILD + ksu for local root, and an inter-forest golden ticket with extra-SID injection granting SeBackupPrivilege to DCSync darkzero.htb and capture the Administrator flag.",
+    tags:       ["ssti", "handlebars", "nodejs", "rce", "mysql", "bcrypt", "kerberos", "ccache", "gitea", "gitea-actions", "ci-cd", "cve", "active-directory", "create-child", "ksu", "bloodyad", "chisel", "socks", "golden-ticket", "extra-sid", "forest-trust", "sebackupprivilege", "dcsync", "pass-the-hash", "impacket"]
+  },
+  {
+    id:         "connected",
+    title:      "HackTheBox: Connected",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Jul 25, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/connected/01_logo.png",
+    locked:     true,
+    excerpt:    "Connected is an Easy difficulty Linux machine hosting FreePBX 16.0.40.7. Initial access exploits an unauthenticated SQL injection in the Endpoint Manager module (CVE-2025-57819) chained into RCE via cron_jobs table write. Root is achieved by poisoning /etc/dahdi/init.conf — owned by asterisk — which is sourced by a root script triggered through an incron file-watch on the asterisk spool directory.",
+    tags:       ["freepbx", "voip", "asterisk", "sqli", "auth-bypass", "rce", "cron-jobs", "incron", "file-watch", "config-poisoning", "source-injection", "cve"]
+  },
+  {
+    id:         "helix",
+    title:      "HackTheBox: Helix",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Medium",
+    date:       "Jul 23, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/helix/01_logo.png",
+    locked:     true,
+    excerpt:    "Helix is a Medium difficulty Linux machine combining industrial automation with data pipeline exploitation. Initial access abuses Apache NiFi's H2 JDBC URL code injection (CVE-2023-34468) to get a reverse shell. Privilege escalation manipulates an OPC-UA industrial server via python-asyncua to push reactor parameters into a maintenance window, triggering helixsvc to enable a root sudo command.",
+    tags:       ["apache-nifi", "h2-jdbc", "code-injection", "rce", "opc-ua", "ics", "scada", "asyncua", "industrial", "sudo", "daemon-abuse", "cve"]
+  },
+  {
     id:         "orion",
     title:      "HackTheBox: Orion",
     category:   "htb",
