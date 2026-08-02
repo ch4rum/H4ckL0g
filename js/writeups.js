@@ -32,6 +32,20 @@ const WRITEUPS = [
     tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
   },
   {
+    id:         "cohort",
+    title:      "HackTheBox: Cohort",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Aug 01, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/cohort/01_logo.png",
+    locked:     true,
+    excerpt:    "Cohort is an Easy difficulty Linux machine featuring a data analytics portal with SSRF in its source registration endpoint. Decimal IP bypass reveals internal services including a Marimo notebook server vulnerable to unauthenticated RCE via WebSocket (CVE-2026-39987). Root is achieved by exploiting a TOCTOU race condition in PackageKit via the Pack2TheRoot exploit (CVE-2026-41651).",
+    tags:       ["ssrf", "ip-bypass", "internal-discovery", "marimo", "websocket", "rce", "packagekit", "toctou", "race-condition", "lpe", "pack2theroot", "cve-2026-39987", "cve-2026-41651"]
+  },
+  {
     id:         "darkzeroreturns",
     title:      "HackTheBox: DarkZeroReturns",
     category:   "htb",
@@ -181,7 +195,7 @@ const WRITEUPS = [
     date:       "Jun 28, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/kobold/01_logo.png",
-    locked:     true,
+    locked:      false,
     excerpt:    "Kobold is an Easy difficulty Linux machine built around AI tooling infrastructure. Initial foothold exploits an unauthenticated RCE in MCPJam Inspector via a crafted MCP server payload (CVE-2026-23744). Privilege escalation abuses Docker group membership to mount the host filesystem and read the root flag.",
     tags:       ["vhost-fuzzing", "mcp", "command-injection", "rce", "docker", "docker-escape", "cve"]
   },
