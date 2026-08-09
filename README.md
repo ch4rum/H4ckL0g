@@ -165,7 +165,7 @@ Then open `http://localhost:3333`.
   date:       "June 5, 2026",
   author:     "Ch4rum",             // or "" for local
   image:      "https://...",
-  locked:     false                 // true = not open
+  locked:     false,                 // true = not open
   excerpt:    "Brief description of the machine.",
   tags:       ["",""]               // topics/tech usados, ej: ["kerberos","xss","rce"]
 },
