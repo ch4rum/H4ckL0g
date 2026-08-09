@@ -13,7 +13,6 @@
 !.dev.vars.example
 .env*
 !.env.example
-wrangler.jsonc
 
 # MacOS
 .DS_Store
