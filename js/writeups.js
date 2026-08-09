@@ -32,6 +32,20 @@ const WRITEUPS = [
     tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
   },
   {
+    id:         "danglingtree",
+    title:      "HackTheBox: DanglingTree",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Windows",
+    difficulty: "Medium",
+    date:       "Aug 09, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/danglingtree/01_logo.png",
+    locked:     true,
+    excerpt:    "DanglingTree is a Medium difficulty Windows machine chaining WAC remote privilege escalation (CVE-2026-26119), SmarterMail auth bypass (WT-2026-0001), .NET DLL reverse engineering for credential decryption, DPAPI cmdkey abuse, ForceChangePassword, and a novel ADCS attack: creating a dangling ESC1 certificate template via LDAP to exploit an already-published CA name and obtain the Administrator NTLM hash via PKINIT.",
+    tags:       ["smb", "guest-share", "wac", "cve", "rce", "smartermail", "wt-2026-0001", "auth-bypass", "port-forwarding", "dotnet", "dll-reversing", "hardcoded-key", "runascs", "dpapi", "cmdkey", "forcechangepassword", "bloodyad", "adcs", "esc1", "dangling-templates", "ldap", "certipy", "pkinit", "strong-certificate-mapping", "ntlm", "active-directory"]
+  },
+  {
     id:         "cohort",
     title:      "HackTheBox: Cohort",
     category:   "htb",
@@ -43,7 +57,7 @@ const WRITEUPS = [
     image:      "writeups/htb/src/cohort/01_logo.png",
     locked:     true,
     excerpt:    "Cohort is an Easy difficulty Linux machine featuring a data analytics portal with SSRF in its source registration endpoint. Decimal IP bypass reveals internal services including a Marimo notebook server vulnerable to unauthenticated RCE via WebSocket (CVE-2026-39987). Root is achieved by exploiting a TOCTOU race condition in PackageKit via the Pack2TheRoot exploit (CVE-2026-41651).",
-    tags:       ["ssrf", "ip-bypass", "internal-discovery", "marimo", "websocket", "rce", "packagekit", "toctou", "race-condition", "lpe", "pack2theroot", "cve-2026-39987", "cve-2026-41651"]
+    tags:       ["ssrf", "ip-bypass", "internal-discovery", "marimo", "websocket", "rce", "packagekit", "toctou", "race-condition", "lpe", "pack2theroot", "cve"]
   },
   {
     id:         "darkzeroreturns",
@@ -83,7 +97,7 @@ const WRITEUPS = [
     date:       "Jul 23, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/helix/01_logo.png",
-    locked:     true,
+    locked:     false,
     excerpt:    "Helix is a Medium difficulty Linux machine combining industrial automation with data pipeline exploitation. Initial access abuses Apache NiFi's H2 JDBC URL code injection (CVE-2023-34468) to get a reverse shell. Privilege escalation manipulates an OPC-UA industrial server via python-asyncua to push reactor parameters into a maintenance window, triggering helixsvc to enable a root sudo command.",
     tags:       ["apache-nifi", "h2-jdbc", "code-injection", "rce", "opc-ua", "ics", "scada", "asyncua", "industrial", "sudo", "daemon-abuse", "cve"]
   },
