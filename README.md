@@ -157,15 +157,18 @@ Then open `http://localhost:3333`.
 ```js
 {
   id:         "machine-name",
-  title:      "HackTheBox: MachineName",
-  category:   "htb",           // htb | tryhackme | ctfs | vulnhub | picoCTF
+  title:      "Platform: MachineName",
+  category:   "htb",                // htb | tryhackme | ctf | vulnhub | pico
   platform:   "HackTheBox",
-  difficulty: "Medium",
+  os:         "Linux",              // Linux | Windows | "empty"
+  difficulty: "Easy",               // Easy | Medium | Hard | Insane
   date:       "June 5, 2026",
-  author:     "Ch4rum",        // or "" for local
+  author:     "Ch4rum",             // or "" for local
   image:      "https://...",
-  excerpt:    "Brief description of the machine."
-}
+  locked:     false                 // true = not open
+  excerpt:    "Brief description of the machine.",
+  tags:       ["",""]               // topics/tech usados, ej: ["kerberos","xss","rce"]
+},
 ```
 
 2. Create `writeups/htb/machine-name.md` with your walkthrough.

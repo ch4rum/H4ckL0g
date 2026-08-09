@@ -14,6 +14,16 @@
 
 const POSTS = [
   {
+    id:       "windows-protection-rings-ring-minus4",
+    title:    "Windows Protection Rings & Ring -4: The Hardware Frontier Nobody Talks About",
+    category: "malware",
+    date:     "Aug 09, 2026",
+    author:   "Ch4rum | Anzscension",
+    reading:  "17 min",
+    image:    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    excerpt:  "Ring 0 rootkits, Ring -1 hypervisors, Ring -2 SMM, Ring -3 Intel ME. Now meet Ring -4 — the layer where assembly becomes useless and your attack vector is voltage, electromagnetic pulses, and physics itself."
+  },
+  {
     id:       "osint-deepfake-detection",
     title:    "OSINT in the Age of Deepfakes: Detecting Synthetic Identities",
     category: "osint",
