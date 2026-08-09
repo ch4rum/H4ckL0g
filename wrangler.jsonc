@@ -3,6 +3,12 @@
     "name": "h4ckl0g",
     "compatibility_date": "2026-08-09",
     "assets": {
-      "directory": "."
+      "directory": ".",
+      "exclude": [
+        ".git/**",
+        ".gitignore",
+        "README.md",
+        "wrangler.jsonc"
+      ]
     }
   }
