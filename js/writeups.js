@@ -213,4 +213,18 @@ const WRITEUPS = [
     excerpt:    "Kobold is an Easy difficulty Linux machine built around AI tooling infrastructure. Initial foothold exploits an unauthenticated RCE in MCPJam Inspector via a crafted MCP server payload (CVE-2026-23744). Privilege escalation abuses Docker group membership to mount the host filesystem and read the root flag.",
     tags:       ["vhost-fuzzing", "mcp", "command-injection", "rce", "docker", "docker-escape", "cve"]
   },
+  {
+    id:         "library",
+    title:      "TryHackMe: Library",
+    category:   "thm",
+    platform:   "TryHackMe",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Aug 12, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/thm/src/library/01_logo.jpg",
+    locked:     false,
+    excerpt:    "Library is an Easy difficulty Linux room from TryHackMe created for the FIT and BSides Guatemala CTF. A username is discovered through web enumeration and robots.txt hints at rockyou.txt for SSH brute-forcing. Privilege escalation abuses a sudo rule allowing execution of a user-writable Python script as root.",
+    tags:       ["enumeration", "robots.txt", "hydra", "ssh-bruteforce", "sudo", "python", "script-abuse", "lpe"]
+  },
 ];
