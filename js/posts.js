@@ -14,6 +14,16 @@
 
 const POSTS = [
   {
+    id:       "edr-evasion-techniques",
+    title:    "EDR Evasion in 2026: Below the Kernel, Beyond Detection",
+    category: "malware",
+    date:     "Sept 04, 2026",
+    author:   "Ch4rum",
+    reading:  "22 min",
+    image:    "https://www.csiny.com/wp-content/uploads/2026/06/edr-evasion.png?w=200&q=80",
+    excerpt:  "Userland hooks, kernel callbacks, ETW telemetry, memory scanning. A conventional shellcode dropper lasts 11 seconds on CrowdStrike. Here's how red teamers operate below every detection layer in 2026."
+  },
+  {
     id:       "windows-protection-rings-ring-minus4",
     title:    "Windows Protection Rings & Ring -4: The Hardware Frontier Nobody Talks About",
     category: "malware",
