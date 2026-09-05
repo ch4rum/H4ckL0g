@@ -222,7 +222,7 @@ const WRITEUPS = [
     difficulty: "Easy",
     date:       "Aug 12, 2026",
     author:     "Ch4rum",
-    image:      "writeups/thm/src/library/01_logo.jpg",
+    image:      "writeups/thm/src/library/01_logo.png",
     locked:     false,
     excerpt:    "Library is an Easy difficulty Linux room from TryHackMe created for the FIT and BSides Guatemala CTF. A username is discovered through web enumeration and robots.txt hints at rockyou.txt for SSH brute-forcing. Privilege escalation abuses a sudo rule allowing execution of a user-writable Python script as root.",
     tags:       ["enumeration", "robots.txt", "hydra", "ssh-bruteforce", "sudo", "python", "script-abuse", "lpe"]
