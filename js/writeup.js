@@ -98,7 +98,11 @@ function initOrbit() {
 
   let cur = 0;
   function rotate() {
-    const next = (cur + 1) % images.length;
+    let next;
+    do {
+      next = Math.floor(Math.random() * images.length);
+    } while (images.length > 1 && next === cur);
+    
     img.style.opacity = '0';
     setTimeout(() => {
       img.src = images[next].src;

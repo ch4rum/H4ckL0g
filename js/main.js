@@ -285,49 +285,67 @@ if (typeof REPOS !== 'undefined' && document.getElementById('repo-list')) {
 // ── RANDOM HERO IMAGE FROM POSTS ──────────────────────────────
 function initRandomHeroImage() {
   const heroImageDiv = document.getElementById('random-hero-image');
-  const heroImg = document.getElementById('random-post-img');
-  const heroTag = document.querySelector('.hero-post-tag');
-  const heroTitle = document.querySelector('.hero-post-title');
-  
+  const heroImg      = document.getElementById('random-post-img');
+  const heroTag      = document.querySelector('.hero-post-tag');
+  const heroTitle    = document.querySelector('.hero-post-title');
+
   if (!heroImageDiv || !heroImg) return;
-  
-  function startRotation() {
-    if (typeof POSTS !== 'undefined' && POSTS.length > 0) {
-      let currentIndex = 0;
-      
-      function updateRandomImage() {
-        let newIndex;
-        do {
-          newIndex = Math.floor(Math.random() * POSTS.length);
-        } while (POSTS.length > 1 && newIndex === currentIndex);
-        
-        currentIndex = newIndex;
-        const post = POSTS[currentIndex];
 
-        heroImg.src = post.image;
-        heroImg.alt = post.title;
-
-        if (heroTag) heroTag.textContent = post.category;
-        if (heroTitle) heroTitle.textContent = post.title;
-
-        heroImageDiv.dataset.postId = post.id;
-      }
-      
-      setInterval(updateRandomImage, 10000);
-      updateRandomImage();
-      heroImageDiv.addEventListener('click', function() {
-        const postId = this.dataset.postId;
-        if (postId) {
-          window.location.href = `post.html?id=${postId}`;
-        }
-      });
-    } else {
-      setTimeout(startRotation, 100);
-    }
+  if (typeof POSTS === 'undefined' || POSTS.length === 0) {
+    setTimeout(initRandomHeroImage, 100);
+    return;
   }
-  
-  startRotation();
+
+  let currentIndex = 0;
+  let interval     = null;
+
+  function writePost(post) {
+    heroImg.src = post.image;
+    heroImg.alt = post.title;
+    if (heroTag)   heroTag.textContent   = post.category;
+    if (heroTitle) heroTitle.textContent = post.title;
+
+    const backImg     = document.getElementById('random-post-img-back');
+    const backTag     = document.getElementById('hero-back-tag');
+    const backTitle   = document.getElementById('hero-back-title');
+    const backExcerpt = document.getElementById('hero-back-excerpt');
+    if (backImg)     { backImg.src = post.image; backImg.alt = post.title; }
+    if (backTag)     backTag.textContent     = post.category;
+    if (backTitle)   backTitle.textContent   = post.title;
+    if (backExcerpt) backExcerpt.textContent = post.excerpt;
+
+    heroImageDiv.dataset.postId = post.id;
+  }
+
+  function nextPost() {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * POSTS.length);
+    } while (POSTS.length > 1 && newIndex === currentIndex);
+    currentIndex = newIndex;
+    writePost(POSTS[currentIndex]);
+  }
+
+  heroImageDiv.addEventListener('mouseenter', () => {
+    clearInterval(interval);
+    interval = null;
+    heroImageDiv.classList.add('is-flipped');
+  });
+
+  heroImageDiv.addEventListener('mouseleave', () => {
+    heroImageDiv.classList.remove('is-flipped');
+    interval = setInterval(nextPost, 10000);
+  });
+
+  heroImageDiv.addEventListener('click', function () {
+    const postId = this.dataset.postId;
+    if (postId) window.location.href = `post.html?id=${postId}`;
+  });
+
+  writePost(POSTS[0]);
+  interval = setInterval(nextPost, 4500);
 }
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initRandomHeroImage);
 } else {

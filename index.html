@@ -32,12 +32,33 @@
       <h1>Knowledge they <em>won't teach</em> you in school</h1>
       <p>Malware, ethical hacking, networks, OSINT. Technical articles for those who want to understand how everything works from the inside.</p>
     </div>
-    <div class="hero-image" id="random-hero-image" style="cursor: pointer;">
-      <img id="random-post-img" src="" alt="Random post"/>
-      <div class="hero-image-caption" id="hero-image-caption">
-        <span class="hero-post-tag"></span>
-        <span class="hero-post-title"></span>
+    <div class="hero-flip-stage" id="random-hero-image">
+
+      <!-- FRONT -->
+      <div class="hero-card-front hero-image">
+        <img id="random-post-img" src="" alt="Random post"/>
+        <div class="hero-image-caption" id="hero-image-caption">
+          <span class="hero-post-tag"></span>
+          <span class="hero-post-title"></span>
+        </div>
       </div>
+    
+      <!-- BACK -->
+      <div class="hero-card-back">
+        <div class="hero-back-line"></div>
+        <div class="hero-back-blur-wrap">
+          <img class="hero-card-back-img" id="random-post-img-back" src="" alt=""/>
+        </div>
+        <div class="hero-back-overlay"></div>
+        <div class="hero-back-content">
+          <span class="hero-back-cat" id="hero-back-tag">—</span>
+          <div class="hero-back-divider"></div>
+          <div class="hero-back-title" id="hero-back-title">—</div>
+          <p class="hero-back-excerpt" id="hero-back-excerpt">—</p>
+          <span class="hero-back-hint">click to read →</span>
+        </div>
+      </div>
+    
     </div>
   </section>
 
