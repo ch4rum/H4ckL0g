@@ -32,6 +32,20 @@ const WRITEUPS = [
     tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
   },
   {
+    id:         "management",
+    title:      "HackTheBox: Management",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Easy",
+    date:       "Sep 12, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/management/01_logo.png",
+    locked:     true,
+    excerpt:    "Management is an Easy difficulty Linux machine exploiting a pre-auth Java deserialization regression in OpenAM 16.0.5 (CVE-2026-33439) via jato.clientSession for initial RCE. Lateral movement chains GLPI MySQL credentials, XChaCha20-Poly1305 decryption (nonce-as-AAD), and LDAP password reuse to gain user access. Root is achieved by abusing a sudo rdiff-backup wildcard with --remote-schema for arbitrary file read.",
+    tags:       ["openam", "java-deserialization", "gadget-chain", "rce", "cve", "glpi", "mysql", "xchacha20", "sodium", "ldap", "credential-reuse", "rdiff-backup", "sudo", "wildcard", "arbitrary-file-read", "yescrypt"]
+  },
+  {
     id:         "danglingtree",
     title:      "HackTheBox: DanglingTree",
     category:   "htb",
