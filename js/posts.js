@@ -14,6 +14,16 @@
 
 const POSTS = [
   {
+    id:       "web3-smart-contract-hacks",
+    title:    "Smart Contract Exploitation: Reentrancy, Flash Loans, and Oracle Manipulation",
+    category: "hacking",
+    date:     "Sep 14, 2026",
+    author:   "Ch4rum",
+    reading:  "26 min",
+    image:    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+    excerpt:  "$4.2 billion extracted from DeFi through logic bugs in immutable code. Go and Python simulations of every major exploit class — reentrancy, flash loans, oracle manipulation, MEV sandwiching, and access control failures."
+  },
+  {
     id:       "edr-evasion-techniques",
     title:    "EDR Evasion in 2026: Below the Kernel, Beyond Detection",
     category: "malware",
