@@ -32,6 +32,48 @@ const WRITEUPS = [
     tags:       ["javascript", "api", "idor", "command-injection", "env-file", "credential-reuse", "kernel-exploit", "overlayfs", "cve"]
   },
   {
+    id:         "stream",
+    title:      "HackTheBox: Stream",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Medium",
+    date:       "Oct 11, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/stream/01_logo.png",
+    locked:     true,
+    excerpt:    "Stream is a Medium difficulty Linux machine built around a Kafka/ClickHouse data pipeline. JVM heapdump via Spring Boot Actuator leaks HikariCP credentials. In-band XXE through the AIDX ingest endpoint exfiltrates files via ClickHouse. Kafka SASL credentials lead to SSH; a protected topic holds a bcrypt hash cracked to pivot users. Root is achieved by overwriting a Python formatter via ClickHouse File engine, exploited by a root systemd timer processing the DLQ.",
+    tags:       ["spring-boot", "actuator", "heapdump", "jvm", "vhost-fuzzing", "xxe", "kafka", "clickhouse", "sasl", "bcrypt", "john", "proc-cmdline", "file-engine", "systemd-timer", "dlq", "suid", "credential-reuse", "pipeline-abuse"]
+  },
+  {
+    id:         "touch",
+    title:      "HackTheBox: Touch",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Windows",
+    difficulty: "Easy",
+    date:       "Oct 03, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/touch/01_logo.png",
+    locked:     true,
+    excerpt:    "Touch is an Easy difficulty Windows machine and direct sequel to Layover. A Nexion DeviceHub API leaks a device serial used as password; the dashboard exposes kiosk credentials in JavaScript. Kiosk escape chains a controlled scanner error to open Edge outside the sandbox, then navigates the filesystem to a cmd shell. Root is achieved by uploading a MySQL UDF DLL (lib_mysqludf_sys_64.dll) via hardcoded root credentials found in a maintenance .bat script, executing commands as NT AUTHORITY\\SYSTEM.",
+    tags:       ["api-enumeration", "javascript", "rdp", "kiosk-escape", "sandbox-escape", "edge-browser", "filesystem", "nodejs", "typescript", "hardcoded-creds", "mysql", "udf", "sys-exec", "dll", "system", "cross-machine"]
+  },
+  {
+    id:         "layover",
+    title:      "HackTheBox: Layover",
+    category:   "htb",
+    platform:   "HackTheBox",
+    os:         "Linux",
+    difficulty: "Medium",
+    date:       "Sep 28, 2026",
+    author:     "Ch4rum",
+    image:      "writeups/htb/src/layover/01_logo.png",
+    locked:     true,
+    excerpt:    "Layover is a Medium difficulty Linux machine set in an airport environment. WiFi monitor mode captures plaintext HTTP credentials over an open network. Craft CMS 5.9.8 is exploited via an authenticated blind RCE gadget chain (CVE-2026-28695). Post-exploitation decrypts Yii2-encrypted DB credentials for SSH access, and root is gained by abusing a CUPS IPP local token hijack (CVE-2026-34990) to write a sudoers entry.",
+    tags:       ["wifi", "monitor-mode", "airmon-ng", "tcpdump", "pcap", "http-cleartext", "craftcms", "yii2", "gadget-chain", "blind-rce", "aes-cbc", "hkdf", "credential-decryption", "mysql", "cups", "ipp", "lpadmin", "sudoers", "cve"]
+  },
+  {
     id:         "management",
     title:      "HackTheBox: Management",
     category:   "htb",
@@ -181,7 +223,7 @@ const WRITEUPS = [
     date:       "Jul 02, 2026",
     author:     "Ch4rum",
     image:      "writeups/htb/src/reactor/01_logo.png",
-    locked:     true,
+    locked:     false,
     excerpt:    "Reactor is an Easy difficulty Linux machine hosting a Next.js 15.0.3 application vulnerable to unauthenticated RCE via React Server Components (CVE-2025-55182). Credentials extracted from a SQLite database lead to SSH access, and privilege escalation abuses a Node.js V8 Inspector process running as root via SSH port forwarding.",
     tags:       ["nextjs", "rce", "react-server-components", "sqlite", "ssh", "port-forwarding", "nodejs", "v8-inspector", "cve"]
   },
