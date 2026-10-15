@@ -1,17 +1,16 @@
 
 <div align="center">
 
-```
-                          ██╗  ██╗██╗  ██╗ ██████╗██╗  ██╗██╗      ██████╗  ██████╗ 
-                          ██║  ██║██║  ██║██╔════╝██║ ██╔╝██║     ██╔═████╗██╔════╝ 
-                          ███████║███████║██║     █████╔╝ ██║     ██║██╔██║██║  ███╗
-                          ██╔══██║╚════██║██║     ██╔═██╗ ██║     ████╔╝██║██║   ██║
-                          ██║  ██║     ██║╚██████╗██║  ██╗███████╗╚██████╔╝╚██████╔╝
-                          ╚═╝  ╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ 
-```
-
+<pre align="center">
+██╗  ██╗██╗  ██╗ ██████╗██╗  ██╗██╗      ██████╗  ██████╗ 
+██║  ██║██║  ██║██╔════╝██║ ██╔╝██║     ██╔═████╗██╔════╝ 
+███████║███████║██║     █████╔╝ ██║     ██║██╔██║██║  ███╗
+██╔══██║╚════██║██║     ██╔═██╗ ██║     ████╔╝██║██║   ██║
+██║  ██║     ██║╚██████╗██║  ██╗███████╗╚██████╔╝╚██████╔╝
+╚═╝  ╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ 
+</pre>
 **Offensive Security & Malware Research Blog**
- 
+
 [![License: MIT](https://img.shields.io/badge/LICENSE-MIT-00e0ff?style=for-the-badge&logo=opensourceinitiative&logoColor=00e0ff&labelColor=0d1117)](LICENSE)
 [![Stack](https://img.shields.io/badge/HTML%20·%20CSS%20·%20JS-vanilla-ff4d6d?style=for-the-badge&logo=javascript&logoColor=ff4d6d&labelColor=0d1117)](#)
 [![Status](https://img.shields.io/badge/STATUS-ACTIVE-00ffb3?style=for-the-badge&logo=statuspage&logoColor=00ffb3&labelColor=0d1117)](#)
